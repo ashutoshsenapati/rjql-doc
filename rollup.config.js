@@ -6,6 +6,8 @@ import { terser } from 'rollup-plugin-terser';
 
 const production = process.env.NODE_ENV ? true : false;
 
+const dev = !production;
+
 export default {
 	input: 'src/main.js',
 	output: {
@@ -39,9 +41,9 @@ export default {
 
 		// In dev mode, call `npm run start` once
 		// the bundle has been generated
-		!production && serve(),
+		dev && serve(),
 
-		!production && livereload({
+		dev && livereload({
 			watch: 'public',
 			port: 2334
 		}),
